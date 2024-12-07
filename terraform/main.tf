@@ -1,3 +1,12 @@
+terraform {
+  backend "s3" {
+    bucket         = "terraform-backend-fiapeats" # Substitua pelo nome do bucket
+    key            = "state/fiapeats-lambda/terraform.tfstate"         # Caminho do estado no bucket
+    region         = "us-east-1"                       # Região do bucket
+    encrypt        = true                              # Criptografia no bucket
+  }
+}
+
 provider "aws" {
   region = "us-east-1" # Ajuste para sua região
 }
@@ -29,10 +38,10 @@ resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
 
 # Função Lambda
 resource "aws_lambda_function" "lambda_function" {
-  function_name = "lambda_autoriza-cliente"
+  function_name = "lambda_autoriza_cliente"
   role          = aws_iam_role.lambda_execution_role.arn
   handler       = "br.com.fiap.fiapeats.Handler::handleRequest"
-  runtime       = "java21"
+  runtime       = "java17"
   timeout       = 15
   memory_size   = 128
 
