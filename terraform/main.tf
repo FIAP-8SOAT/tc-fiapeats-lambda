@@ -29,15 +29,15 @@ resource "aws_iam_policy_attachment" "lambda_policy_attachment" {
 
 # Função Lambda
 resource "aws_lambda_function" "lambda_function" {
-  function_name = "lambda_autoriza-cliente"
+  function_name = "lambda_autoriza_cliente"
   role          = aws_iam_role.lambda_execution_role.arn
-  handler       = "br.com.fiap.fiapeats.Handler::handleRequest"
-  runtime       = "java21"
+  handler       = "br.com.fiap.fiapeats.StreamLambdaHandler::handleRequest"
+  runtime       = "java17"
   timeout       = 15
   memory_size   = 128
 
-  filename         = "../target/fiapeats-lambda-1.0-SNAPSHOT.jar"
-  source_code_hash = filebase64sha256("../target/fiapeats-lambda-1.0-SNAPSHOT.jar")
+  filename         = "../target/fiapeats-lambda-0.0.1-SNAPSHOT.jar"
+  source_code_hash = filebase64sha256("../target/fiapeats-lambda-0.0.1-SNAPSHOT.jar")
 
   environment {
     variables = {
