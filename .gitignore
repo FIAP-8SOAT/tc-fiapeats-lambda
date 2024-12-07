@@ -1,7 +1,14 @@
+HELP.md
 target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
 
 ### IntelliJ IDEA ###
 .idea
+*.iws
+*.iml
+*.ipr
 
 # Diretório de plugins e arquivos temporários do Terraform
 .terraform/
@@ -19,3 +26,6 @@ tfplan
 # Outros arquivos de log ou temporários
 *.log
 *.tfvars
+
+### VS Code ###
+.vscode/
