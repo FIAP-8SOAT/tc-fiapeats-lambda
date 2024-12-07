@@ -20,3 +20,12 @@ tfplan
 *.log
 *.tfvars
 fiapeats-lambda.iml
+.aws-sam/build.toml
+.aws-sam/build/Function/br/com/fiap/fiapeats/Handler.class
+.aws-sam/build/Function/lib/com.amazonaws.aws-lambda-java-core-1.2.1.jar
+.aws-sam/build/Function/lib/com.amazonaws.aws-lambda-java-events-3.11.0.jar
+.aws-sam/build/Function/lib/joda-time.joda-time-2.6.jar
+.aws-sam/build/template.yaml
+.aws-sam/temp-template.yaml
+dependency-reduced-pom.xml
+dependency-reduced-pom.xml
