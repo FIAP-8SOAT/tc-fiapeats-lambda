@@ -29,3 +29,4 @@ tfplan
 
 ### VS Code ###
 .vscode/
+dependency-reduced-pom.xml
