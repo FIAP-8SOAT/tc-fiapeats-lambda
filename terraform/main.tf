@@ -42,7 +42,7 @@ resource "aws_lambda_function" "lambda_function" {
   role          = aws_iam_role.lambda_execution_role.arn
   handler       = "br.com.fiap.fiapeats.Handler::handleRequest"
   runtime       = "java17"
-  timeout       = 15
+  timeout       = 120
   memory_size   = 128
 
   filename         = "../target/fiapeats-lambda-1.0-SNAPSHOT.jar"
