@@ -18,7 +18,6 @@ tfplan
 
 # Outros arquivos de log ou temporários
 *.log
-*.tfvars
 fiapeats-lambda.iml
 .aws-sam/
 .aws-sam/build.toml
