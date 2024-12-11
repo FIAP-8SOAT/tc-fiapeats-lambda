@@ -53,7 +53,7 @@ jobs:
       id: determine_action
       run: |
         cd terraform
-        destroy_infra=$(terraform console | grep "destroy_infra" | awk '{print $3}')
+        destroy_infra=$(grep 'destroy_infra' terraform.tfvars | cut -d '=' -f2 | tr -d ' ')
         if [ "$destroy_infra" = "true" ]; then
           echo "Infrastructure will be destroyed."
           echo "action=destroy" >> $GITHUB_ENV
@@ -61,17 +61,14 @@ jobs:
           echo "Infrastructure will be applied."
           echo "action=apply" >> $GITHUB_ENV
         fi
-      env:
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Plan Terraform
       run: |
         cd terraform
         if [ "$action" == "destroy" ]; then
-          terraform plan -destroy -out=tfplan
+          terraform plan -destroy -var-file="terraform.tfvars" -out=tfplan
         else
-          terraform plan -out=tfplan
+          terraform plan -var-file="terraform.tfvars" -out=tfplan
         fi
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -81,7 +78,7 @@ jobs:
       run: |
         cd terraform
         if [ "$action" == "destroy" ]; then
-          terraform destroy -auto-approve
+          terraform destroy -auto-approve -var-file="terraform.tfvars"
         else
           terraform apply -auto-approve tfplan
         fi
