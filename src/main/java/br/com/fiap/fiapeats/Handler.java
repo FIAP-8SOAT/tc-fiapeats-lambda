@@ -31,7 +31,7 @@ public class Handler implements RequestHandler<APIGatewayProxyRequestEvent, APIG
 
             System.out.println("Request: " + validaClienteRequest.documento());
 
-            var mensagem = "Cliente não cadastrado";
+            var mensagem = "Cliente não cadastrado!";
             if(validaCliente.consulta(validaClienteRequest.documento())){
                 mensagem = "Cliente cadastrado";
             }
