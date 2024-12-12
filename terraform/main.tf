@@ -50,7 +50,7 @@ resource "aws_lambda_function" "lambda_function" {
 
   environment {
     variables = {
-      KEY = "value"
+      URL_API = "https://3651-191-227-243-148.ngrok-free.app/fiapeats/cliente/"
     }
   }
 }
