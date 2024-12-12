@@ -10,14 +10,14 @@ public class ValidaCliente {
 
     public boolean consulta(String documento) throws IOException, InterruptedException {
 
-        HttpClient client = HttpClient.newHttpClient();
+        String url = System.getenv("URL_API");
 
-        String url = "https://3651-191-227-243-148.ngrok-free.app/fiapeats/cliente/"+documento;
+        HttpClient client = HttpClient.newHttpClient();
 
         System.out.println("Url API: " + url);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(url))
+                .uri(URI.create(url+documento))
                 .GET()
                 .version(HttpClient.Version.HTTP_1_1)
                 .build();
