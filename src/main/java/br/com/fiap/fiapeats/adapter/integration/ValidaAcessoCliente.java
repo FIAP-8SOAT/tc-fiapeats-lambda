@@ -1,14 +1,12 @@
 package br.com.fiap.fiapeats.adapter.integration;
 
-import br.com.fiap.fiapeats.adapter.response.ValidaClienteResponse;
-
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.URI;
 
-public class ValidaCliente {
+public class ValidaAcessoCliente {
 
     public ValidaClienteResponse consulta(String documento) throws IOException, InterruptedException {
 
